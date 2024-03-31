@@ -25,6 +25,17 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+web3j {
+    generatedPackageName = 'com.example.blockchain.contract'
+    generatedFilesBaseDir = "$projectDir/src/main/java"
+    excludedContracts = []
+    includedContracts = []
+    contract {
+        // Specify the directory where your Solidity files are located
+        soliditySourceFiles = fileTree(dir: 'src/main/resources/solidity', includes: ['*.sol'])
+    }
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
